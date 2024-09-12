@@ -1,0 +1,22 @@
+body {
+    background-color: rgba(2, 2, 2, 0.732);
+    color: wheat;
+}
+.navbar-brand {
+    color: white;
+}
+#contactform {
+    padding: 30px;
+}
+.titulo {
+    padding: 20px;
+    text-align: center;
+}
+#textoculto {
+    display: none;
+}
+#foto1 {
+    width: 40vh;
+    border-radius: 25px;
+}
+
