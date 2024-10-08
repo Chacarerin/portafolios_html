@@ -1,0 +1,36 @@
+# Archivos generados por Python
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+
+# Entornos virtuales
+env/
+venv/
+*.env
+
+# Archivos de configuración local
+*.local
+*.log
+*.pot
+*.sqlite3
+db.sqlite3
+*.pyc
+*.pyo
+.DS_Store
+
+# Archivos de migración de Django
+*/migrations/*
+!*/migrations/__init__.py
+
+# Archivos estáticos generados automáticamente
+staticfiles/
+media/
+
+# Archivos de configuración de IDEs y editores de código
+.vscode/
+.idea/
+
+# Archivos creados por el sistema operativo
+.DS_Store
+Thumbs.db

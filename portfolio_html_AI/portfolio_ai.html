@@ -1,0 +1,465 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Portfolio - Rubén Schnettler</title>
+
+    <!-- Tailwind CSS CDN -->
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+
+    <!-- Font Awesome CDN for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
+
+    <!-- Animate.css CDN -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+
+    <style>
+        html {
+            scroll-behavior: smooth;
+        }
+
+        .header-bg {
+            background-image: url('https://images.unsplash.com/photo-1506748686214-e9df14d4d9d0?ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-4.0.3&auto=format&fit=crop&w=1350&q=80');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+        }
+
+        /* Modo claro */
+        .light-mode {
+            --bg-color: #ffffff;
+            --text-color: #111827;
+            --secondary-bg-color: #f3f4f6;
+            --secondary-text-color: #374151;
+            --primary-button: #1F2937;
+            --hover-button: #374151;
+        }
+
+        /* Modo oscuro */
+        .dark-mode {
+            --bg-color: #1F2937;
+            --text-color: #f3f4f6;
+            --secondary-bg-color: #374151;
+            --secondary-text-color: #9CA3AF;
+            --primary-button: #4B5563;
+            --hover-button: #6B7280;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-color);
+        }
+
+        .bg-primary {
+            background-color: var(--primary-button);
+        }
+
+        .bg-secondary {
+            background-color: var(--secondary-bg-color);
+        }
+
+        .text-primary {
+            color: var(--text-color);
+        }
+
+        .text-secondary {
+            color: var(--secondary-text-color);
+        }
+
+        button {
+            background-color: var(--primary-button);
+        }
+
+        button:hover {
+            background-color: var(--hover-button);
+        }
+
+        .hero-text {
+            background-color: rgba(0, 0, 0, 0.6);
+            padding: 20px;
+            border-radius: 10px;
+        }
+
+        .fade-in {
+            opacity: 0;
+        }
+
+        .transition-colors {
+            transition: background-color 0.5s, color 0.5s;
+        }
+
+        .theme-button {
+            font-size: 24px;
+            cursor: pointer;
+        }
+
+        .hidden {
+            display: none;
+        }
+
+        /* Section Spacing */
+        section {
+            padding-top: 100px;
+            padding-bottom: 100px;
+        }
+
+        /* Slow down animations */
+        .animate__animated {
+            --animate-duration: 1.5s;
+        }
+
+        /* Icon of a flag for language switch */
+        .language-switch {
+            cursor: pointer;
+            font-size: 24px;
+            color: var(--text-color);
+            transition: color 0.3s ease;
+        }
+
+        .language-switch:hover {
+            color: var (--hover-button);
+        }
+
+        /* Improve contrast */
+        .bg-light {
+            background-color: #f3f4f6;
+            color: var(--text-color);
+        }
+
+        .social-icons i {
+            font-size: 50px;
+            margin: 0 15px;
+            transition: transform 0.3s ease;
+        }
+
+        .social-icons i:hover {
+            transform: scale(1.5);
+        }
+    </style>
+</head>
+
+<body class="light-mode transition-colors">
+
+    <!-- Botones para el modo oscuro y cambio de idioma -->
+    <i id="light-mode-btn" class="fas fa-sun theme-button hidden"></i>
+    <i id="dark-mode-btn" class="fas fa-moon theme-button"></i>
+    <i id="language-btn" class="fas fa-globe language-switch"></i>
+
+    <!-- Navbar -->
+    <nav class="bg-primary text-white fixed w-full top-0 z-50 shadow-lg transition-colors">
+        <div class="max-w-7xl mx-auto px-4">
+            <div class="flex justify-between items-center py-4">
+                <div id="nav-brand" class="text-2xl font-bold">Rubén Schnettler</div>
+
+                <!-- Menú de navegación en escritorio -->
+                <div id="menu" class="md:flex space-x-6">
+                    <a id="nav-home" href="#inicio" class="hover:text-gray-400">Inicio</a>
+                    <a id="nav-about" href="#about-me" class="hover:text-gray-400">Sobre mí</a>
+                    <a id="nav-experience" href="#experience" class="hover:text-gray-400">Experiencia</a>
+                    <a id="nav-academic" href="#academic" class="hover:text-gray-400">Académico</a>
+                    <a id="nav-skills" href="#skills" class="hover:text-gray-400">Habilidades</a>
+                    <a id="nav-contact" href="#contact" class="hover:text-gray-400">Contacto</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Home Section -->
+    <section id="inicio" class="h-screen flex items-center justify-center header-bg text-white animate__animated animate__fadeInDown">
+        <div class="text-center fade-in hero-text">
+            <h1 id="hero-title" class="text-6xl font-bold mb-6">Hola, soy Rubén Schnettler</h1>
+            <p id="hero-subtitle" class="text-2xl">Ingeniero Civil Industrial | Padre de Antonia | Apasionado por la Tecnología</p>
+        </div>
+    </section>
+
+    <!-- About Me Section -->
+    <section id="about-me" class="py-20 bg-secondary transition-colors animate__animated animate__fadeInUp">
+        <div class="max-w-7xl mx-auto px-4 flex items-center justify-center fade-in flex-wrap lg:flex-nowrap">
+            <!-- Imagen a la izquierda -->
+            <div class="w-full lg:w-1/2 mb-8 lg:mb-0">
+                <img src="assets/img/DC4A0699-2.jpg" alt="Rubén Schnettler photo" class="rounded-full mx-auto lg:mx-0 lg:w-3/4 shadow-lg">
+            </div>
+            
+            <!-- Texto a la derecha -->
+            <div class="w-full lg:w-1/2 text-left lg:pl-10">
+                <h2 id="about-title" class="text-4xl font-bold mb-6 text-primary">Sobre mí</h2>
+                <p id="about-paragraph1" class="text-lg text-secondary">
+                    Soy Rubén Schnettler, ingeniero civil industrial con más de 10 años de experiencia en gestión de proyectos, planificación estratégica y liderazgo.
+                </p>
+                <p id="about-paragraph2" class="text-lg text-secondary mt-6">
+                    Como programador Full Stack, me especializo en aplicaciones web utilizando tecnologías como Python y Django, integrando mis conocimientos de ingeniería con el desarrollo de software para crear aplicaciones eficientes y escalables.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Experience Section -->
+    <section id="experience" class="py-20 bg-light transition-colors animate__animated animate__fadeInUp">
+        <div class="max-w-7xl mx-auto px-4">
+            <h2 id="experience-title" class="text-4xl font-bold mb-6 text-primary">Experiencia Profesional</h2>
+            <ul class="list-disc list-inside text-secondary">
+                <li id="experience-item1">Supervisé la gestión de recursos financieros y humanos y desarrollé estrategias para mejorar la eficiencia operativa.</li>
+                <li id="experience-item2">Formé parte del equipo que rediseñó los programas de ingeniería para implementar un currículo basado en competencias.</li>
+                <li id="experience-item3">Desarrollé iniciativas orientadas a promover la diversidad y la inclusión, liderando proyectos como "Mujeres en Ingeniería".</li>
+                <li id="experience-item4">Enseñé física y matemáticas en nivel secundario, además de liderar programas de tutoría y ferias científicas.</li>
+            </ul>
+        </div>
+    </section>
+
+    <!-- Academic Section -->
+    <section id="academic" class="py-20 bg-secondary transition-colors animate__animated animate__fadeInUp">
+        <div class="max-w-7xl mx-auto px-4">
+            <h2 id="academic-title" class="text-4xl font-bold mb-6 text-primary">Formación Académica</h2>
+            <ul class="list-disc list-inside text-secondary">
+                <li id="academic-title1">MBA, Magíster en Gestión Empresarial</li>
+                <li id="academic-title2">Ingeniero Civil Industrial</li>
+                <li id="academic-title3">Ingeniero en Acuicultura</li>
+                <li id="academic-item1">Graduado con enfoque en la gestión de recursos, la planificación estratégica y la optimización de procesos.</li>
+                <li id="academic-item2">Especializado en gestión industrial, mejora de procesos y análisis estratégico.</li>
+                <li id="academic-item3">Graduado con honores, con competencias avanzadas en biotecnología y gestión de recursos acuícolas.</li>
+            </ul>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills" class="py-20 bg-light transition-colors animate__animated animate__fadeInUp">
+        <div class="max-w-7xl mx-auto px-4">
+            <h2 id="skills-title" class="text-4xl font-bold mb-6 text-primary">Habilidades</h2>
+            <ul class="list-disc list-inside text-secondary">
+                <li id="skill1">Gestión de Proyectos</li>
+                <li id="skill2">Planificación Estratégica</li>
+                <li id="skill3">Liderazgo y Gestión de Equipos</li>
+                <li id="skill4">Desarrollo Full Stack (Python & Django)</li>
+                <li id="skill5">Diversidad e Inclusión</li>
+                <li id="skill6">Inglés (Nivel Intermedio)</li>
+            </ul>
+        </div>
+    </section>
+
+    <!-- Activities Section -->
+    <section id="activities" class="py-20 bg-secondary transition-colors animate__animated animate__fadeInUp">
+        <div class="max-w-7xl mx-auto px-4">
+            <h2 id="activities-title" class="text-4xl font-bold mb-6 text-primary">Otras Actividades</h2>
+            <ul class="list-disc list-inside text-secondary">
+                <li id="activity-title1">Miembro de red Alumni - Enseña Chile</li>
+                <li id="activity-title2">Director de oficina - Fundación Techo</li>
+                <li id="activity-item1">Participé como profesor en el programa Enseña Chile, desarrollando habilidades en liderazgo, pedagogía y trabajo en equipo.</li>
+                <li id="activity-item2">Lideré proyectos en campamentos, movilizando familias y desarrollando proyectos comunitarios.</li>
+            </ul>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-20 bg-light transition-colors animate__animated animate__fadeInUp">
+        <div class="max-w-7xl mx-auto px-4">
+            <h2 id="contact-title" class="text-4xl font-bold mb-6 text-primary">Contáctame</h2>
+            <form action="#" method="post">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div>
+                        <label id="label-name" class="block mb-2 text-secondary">Nombre</label>
+                        <input type="text" id="name" name="name" class="w-full p-3 border border-gray-300 rounded-lg">
+                    </div>
+                    <div>
+                        <label id="label-email" class="block mb-2 text-secondary">Correo Electrónico</label>
+                        <input type="email" id="email" name="email" class="w-full p-3 border border-gray-300 rounded-lg">
+                    </div>
+                </div>
+                <div class="mt-6">
+                    <label id="label-message" class="block mb-2 text-secondary">Mensaje</label>
+                    <textarea id="message" name="message" rows="6" class="w-full p-3 border border-gray-300 rounded-lg"></textarea>
+                </div>
+                <div class="mt-6">
+                    <button type="submit" class="w-full md:w-auto px-6 py-3 text-white bg-primary hover:bg-gray-700 rounded-lg">Enviar</button>
+                </div>
+            </form>
+        </div>
+    </section>
+
+    <!-- Social Icons -->
+    <section class="py-10 bg-secondary">
+        <div class="max-w-7xl mx-auto text-center">
+            <h2 id="social-title" class="text-3xl font-bold text-primary mb-6">Sígueme en mis redes sociales</h2>
+            <div class="social-icons">
+                <a href="https://twitter.com"><i class="fab fa-twitter"></i></a>
+                <a href="https://linkedin.com"><i class="fab fa-linkedin"></i></a>
+                <a href="https://github.com"><i class="fab fa-github"></i></a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Script para cambiar idioma y tema -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            console.log("DOM fully loaded");
+
+            const lightModeBtn = document.getElementById('light-mode-btn');
+            const darkModeBtn = document.getElementById('dark-mode-btn');
+            const languageBtn = document.getElementById('language-btn');
+            const body = document.body;
+
+            console.log("Light mode button:", lightModeBtn);
+            console.log("Dark mode button:", darkModeBtn);
+            console.log("Language button:", languageBtn);
+
+            // Theme switching logic
+            if (lightModeBtn && darkModeBtn) {
+                console.log("Theme buttons found");
+                lightModeBtn.addEventListener('click', () => {
+                    body.classList.remove('dark-mode');
+                    body.classList.add('light-mode');
+                    lightModeBtn.classList.add('hidden');
+                    darkModeBtn.classList.remove('hidden');
+                });
+
+                darkModeBtn.addEventListener('click', () => {
+                    body.classList.remove('light-mode');
+                    body.classList.add('dark-mode');
+                    darkModeBtn.classList.add('hidden');
+                    lightModeBtn.classList.remove('hidden');
+                });
+            } else {
+                console.warn("Theme buttons not found");
+            }
+
+            // Function to translate the page
+            function translatePage(lang) {
+                console.log("Translating to:", lang);
+                const translations = {
+                    'es': {
+                        'nav-home': 'Inicio',
+                        'nav-about': 'Sobre mí',
+                        'nav-experience': 'Experiencia',
+                        'nav-academic': 'Académico',
+                        'nav-skills': 'Habilidades',
+                        'nav-contact': 'Contacto',
+                        'hero-title': 'Hola, soy Rubén Schnettler',
+                        'hero-subtitle': 'Ingeniero Civil Industrial | Padre de Antonia | Apasionado por la Tecnología',
+                        'about-title': 'Sobre mí',
+                        'about-paragraph1': 'Soy Rubén Schnettler, ingeniero civil industrial con más de 10 años de experiencia en gestión de proyectos, planificación estratégica y liderazgo.',
+                        'about-paragraph2': 'Como programador Full Stack, me especializo en aplicaciones web utilizando tecnologías como Python y Django, integrando mis conocimientos de ingeniería con el desarrollo de software para crear aplicaciones eficientes y escalables.',
+                        'experience-title': 'Experiencia Profesional',
+                        'experience-item1': 'Supervisé la gestión de recursos financieros y humanos y desarrollé estrategias para mejorar la eficiencia operativa.',
+                        'experience-item2': 'Formé parte del equipo que rediseñó los programas de ingeniería para implementar un currículo basado en competencias.',
+                        'experience-item3': 'Desarrollé iniciativas orientadas a promover la diversidad y la inclusión, liderando proyectos como "Mujeres en Ingeniería".',
+                        'experience-item4': 'Enseñé física y matemáticas en nivel secundario, además de liderar programas de tutoría y ferias científicas.',
+                        'academic-title': 'Formación Académica',
+                        'academic-title1': 'MBA, Magíster en Gestión Empresarial',
+                        'academic-title2': 'Ingeniero Civil Industrial',
+                        'academic-title3': 'Ingeniero en Acuicultura',
+                        'academic-item1': 'Graduado con enfoque en la gestión de recursos, la planificación estratégica y la optimización de procesos.',
+                        'academic-item2': 'Especializado en gestión industrial, mejora de procesos y análisis estratégico.',
+                        'academic-item3': 'Graduado con honores, con competencias avanzadas en biotecnología y gestión de recursos acuícolas.',
+                        'skills-title': 'Habilidades',
+                        'skill1': 'Gestión de Proyectos',
+                        'skill2': 'Planificación Estratégica',
+                        'skill3': 'Liderazgo y Gestión de Equipos',
+                        'skill4': 'Desarrollo Full Stack (Python & Django)',
+                        'skill5': 'Diversidad e Inclusión',
+                        'skill6': 'Inglés (Nivel Intermedio)',
+                        'activities-title': 'Otras Actividades',
+                        'activity-title1': 'Miembro de red Alumni - Enseña Chile',
+                        'activity-title2': 'Director de oficina - Fundación Techo',
+                        'activity-item1': 'Participé como profesor en el programa Enseña Chile, desarrollando habilidades en liderazgo, pedagogía y trabajo en equipo.',
+                        'activity-item2': 'Lideré proyectos en campamentos, movilizando familias y desarrollando proyectos comunitarios.',
+                        'contact-title': 'Contáctame',
+                        'label-name': 'Nombre',
+                        'label-email': 'Correo Electrónico',
+                        'label-message': 'Mensaje',
+                        'submit-button': 'Enviar',
+                        'social-title': 'Sígueme en mis redes sociales'
+                    },
+                    'en': {
+                        'nav-home': 'Home',
+                        'nav-about': 'About Me',
+                        'nav-experience': 'Experience',
+                        'nav-academic': 'Academic',
+                        'nav-skills': 'Skills',
+                        'nav-contact': 'Contact',
+                        'hero-title': 'Hello, I\'m Rubén Schnettler',
+                        'hero-subtitle': 'Industrial Civil Engineer | Father of Antonia | Passionate About Technology',
+                        'about-title': 'About Me',
+                        'about-paragraph1': 'I am Rubén Schnettler, an industrial civil engineer with over 10 years of experience in project management, strategic planning, and leadership.',
+                        'about-paragraph2': 'As a Full Stack programmer, I specialize in web applications using technologies such as Python and Django, integrating my engineering knowledge with software development to create efficient and scalable applications.',
+                        'experience-title': 'Professional Experience',
+                        'experience-item1': 'Supervised the management of financial and human resources and developed strategies to improve operational efficiency.',
+                        'experience-item2': 'Was part of the team that redesigned engineering programs to implement a competency-based curriculum.',
+                        'experience-item3': 'Developed initiatives aimed at promoting diversity and inclusion, leading projects such as "Women in Engineering".',
+                        'experience-item4': 'Taught physics and mathematics at the secondary level, in addition to leading tutoring programs and science fairs.',
+                        'academic-title': 'Academic Background',
+                        'academic-title1': 'MBA, Master in Business Management',
+                        'academic-title2': 'Industrial Civil Engineer',
+                        'academic-title3': 'Aquaculture Engineer',
+                        'academic-item1': 'Graduated with a focus on resource management, strategic planning, and process optimization.',
+                        'academic-item2': 'Specialized in industrial management, process improvement, and strategic analysis.',
+                        'academic-item3': 'Graduated with honors, with advanced skills in biotechnology and aquaculture resource management.',
+                        'skills-title': 'Skills',
+                        'skill1': 'Project Management',
+                        'skill2': 'Strategic Planning',
+                        'skill3': 'Leadership and Team Management',
+                        'skill4': 'Full Stack Development (Python & Django)',
+                        'skill5': 'Diversity and Inclusion',
+                        'skill6': 'English (Intermediate Level)',
+                        'activities-title': 'Other Activities',
+                        'activity-title1': 'Alumni Network Member - Enseña Chile',
+                        'activity-title2': 'Office Director - Techo Foundation',
+                        'activity-item1': 'Participated as a teacher in the Enseña Chile program, developing skills in leadership, pedagogy, and teamwork.',
+                        'activity-item2': 'Led projects in camps, mobilizing families and developing community projects.',
+                        'contact-title': 'Contact Me',
+                        'label-name': 'Name',
+                        'label-email': 'Email',
+                        'label-message': 'Message',
+                        'submit-button': 'Send',
+                        'social-title': 'Follow me on social media'
+                    }
+                };
+
+                Object.keys(translations[lang]).forEach(key => {
+                    const elements = document.querySelectorAll(`[id$="${key}"]`);
+                    elements.forEach(element => {
+                        if (element) {
+                            element.textContent = translations[lang][key];
+                        } else {
+                            console.warn(`Element not found: ${key}`);
+                        }
+                    });
+                });
+
+                // Update submit button text
+                const submitButton = document.querySelector('button[type="submit"]');
+                if (submitButton) {
+                    submitButton.textContent = translations[lang]['submit-button'];
+                }
+
+                document.documentElement.lang = lang;
+            }
+
+            // Set initial language to Spanish
+            translatePage('es');
+
+            // Language toggle
+            if (languageBtn) {
+                console.log("Adding click event to language button");
+                languageBtn.addEventListener('click', () => {
+                    console.log("Language button clicked");
+                    const newLang = document.documentElement.lang === "es" ? "en" : "es";
+                    translatePage(newLang);
+                });
+            } else {
+                console.warn("Language button not found. Make sure the element with id 'language-btn' exists in your HTML.");
+            }
+        });
+
+        // Fallback in case DOMContentLoaded doesn't fire
+        window.onload = function() {
+            console.log("Window loaded");
+            if (!document.getElementById('language-btn')) {
+                console.warn("Language button still not found after window load");
+            }
+        };
+    </script>
+</body>
+
+</html>
